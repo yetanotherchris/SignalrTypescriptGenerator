@@ -1,0 +1,84 @@
+﻿@using SignalrTypescriptGenerator.Models
+// Hubs
+interface SignalR
+{
+	@foreach (TypeInfo type in Model.Hubs)
+	{
+	<text>@(type.Name) : @(type.TypescriptType);</text>
+	}
+}
+
+// Service contracts
+@foreach (ServiceInfo serviceInfo in Model.ServiceContracts)
+{
+<text>
+declare module @serviceInfo.ModuleName
+{
+
+	interface @serviceInfo.InterfaceName
+	{
+		server : @Raw(serviceInfo.ServerType);
+		client : @Raw(serviceInfo.ClientType);
+	}
+
+	interface @serviceInfo.ServerType
+	{
+		@foreach (FunctionDetails functionDetails in serviceInfo.FunctionDetails)
+		{
+		<text>@Raw(functionDetails.Name + functionDetails.Arguments) : @Raw(functionDetails.JQueryPromise);</text>
+		}
+	}
+}
+</text>
+}
+
+// Clients
+@foreach (ClientInfo serviceInfo in Model.Clients)
+{
+<text>
+declare module @serviceInfo.ModuleName
+{
+	interface @serviceInfo.InterfaceName
+	{
+		@foreach (FunctionDetails functionDetails in serviceInfo.FunctionDetails)
+		{
+		<text>@Raw(functionDetails.Name + functionDetails.Arguments) : @Raw(functionDetails.JQueryPromise);</text>
+		}
+	}
+}
+</text>
+}
+
+// Data contracts
+@foreach (DataContractInfo dataContractInfo in Model.DataContracts)
+{
+<text>
+declare module @dataContractInfo.ModuleName
+{
+	interface @dataContractInfo.InterfaceName
+	{
+		@foreach (TypeInfo property in dataContractInfo.Properties)
+		{
+		<text>@Raw(property.Name) : @Raw(property.TypescriptType);</text>
+		}
+	}
+}
+</text>
+}
+
+// Enums
+@foreach (EnumInfo enumInfo in Model.Enums)
+{
+<text>
+declare module @enumInfo.ModuleName
+{
+	interface @enumInfo.InterfaceName
+	{
+		@foreach (TypeInfo property in enumInfo.Properties)
+		{
+		<text>@Raw(property.Name) : @Raw(property.TypescriptType);</text>
+		}
+	}
+}
+</text>
+}
