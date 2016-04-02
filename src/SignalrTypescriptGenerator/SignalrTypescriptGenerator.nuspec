@@ -3,7 +3,7 @@
 	<metadata>
 		<id>SignalrTypescriptGenerator</id>
 		<version>$version$</version>
-		<title>Signlar Typescript Hub Generator</title>
+		<title>Signalr Typescript Hub Generator</title>
 		<authors>C.Small</authors>
 		<owners>>C.Small</owners>
 		<projectUrl>https://github.com/yetanotherchris/SignalrTypescriptGenerator</projectUrl>
