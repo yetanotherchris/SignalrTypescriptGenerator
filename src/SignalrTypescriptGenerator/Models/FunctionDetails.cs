@@ -4,6 +4,6 @@ namespace SignalrTypescriptGenerator.Models
 	{
 		public string Name { get; set; }
 		public string Arguments { get; set; }
-		public string JQueryPromise { get; set; }
+		public string ReturnType { get; set; }
 	}
 }

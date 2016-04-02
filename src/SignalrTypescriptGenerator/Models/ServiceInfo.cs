@@ -6,13 +6,15 @@ namespace SignalrTypescriptGenerator.Models
 	{
 		public string ModuleName { get; set; }
 		public string InterfaceName { get; set; }
-		public string ServerType { get; set; }
 		public string ClientType { get; set; }
-		public List<FunctionDetails> FunctionDetails { get; set; }
+
+		public string ServerType { get; set; }
+		public string ServerTypeFullNamespace { get; set; }
+		public List<FunctionDetails> ServerFunctions { get; set; }
 
 		public ServiceInfo()
 		{
-			FunctionDetails = new List<FunctionDetails>();
+			ServerFunctions = new List<FunctionDetails>();
 		}
 	}
 }

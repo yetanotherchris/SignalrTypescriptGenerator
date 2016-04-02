@@ -13,23 +13,22 @@ interface SignalR
 }
 
 // Service contracts
-@foreach (ServiceInfo serviceInfo in Model.ServiceContracts)
-{
+@foreach (ServiceInfo serviceInfo in Model.ServiceContracts){
 <text>
 declare module @serviceInfo.ModuleName
 {
 
 	interface @serviceInfo.InterfaceName
 	{
-		server : @Raw(serviceInfo.ServerType);
+		server : @Raw(serviceInfo.ServerTypeFullNamespace);
 		client : @Raw(serviceInfo.ClientType);
 	}
 
 	interface @serviceInfo.ServerType
 	{
-		@foreach (FunctionDetails functionDetails in serviceInfo.FunctionDetails)
+		@foreach (FunctionDetails functionDetails in serviceInfo.ServerFunctions)
 		{
-		<text>@Raw(functionDetails.Name + functionDetails.Arguments) : @Raw(functionDetails.JQueryPromise);</text>
+		<text>@Raw(functionDetails.Name + functionDetails.Arguments) : @Raw(functionDetails.ReturnType);</text>
 		}
 	}
 }
@@ -37,16 +36,15 @@ declare module @serviceInfo.ModuleName
 }
 
 // Clients
-@foreach (ClientInfo serviceInfo in Model.Clients)
-{
+@foreach (ClientInfo clientInfo in Model.Clients){
 <text>
-declare module @serviceInfo.ModuleName
+declare module @clientInfo.ModuleName
 {
-	interface @serviceInfo.InterfaceName
+	interface @clientInfo.InterfaceName
 	{
-		@foreach (FunctionDetails functionDetails in serviceInfo.FunctionDetails)
+		@foreach (FunctionDetails functionDetails in clientInfo.FunctionDetails)
 		{
-		<text>@Raw(functionDetails.Name + functionDetails.Arguments) : @Raw(functionDetails.JQueryPromise);</text>
+		<text>@Raw(functionDetails.Name) : @Raw(functionDetails.Arguments) => void;</text>
 		}
 	}
 }
@@ -54,8 +52,7 @@ declare module @serviceInfo.ModuleName
 }
 
 // Data contracts
-@foreach (DataContractInfo dataContractInfo in Model.DataContracts)
-{
+@foreach (DataContractInfo dataContractInfo in Model.DataContracts){
 <text>
 declare module @dataContractInfo.ModuleName
 {
@@ -71,8 +68,7 @@ declare module @dataContractInfo.ModuleName
 }
 
 // Enums
-@foreach (EnumInfo enumInfo in Model.Enums)
-{
+@foreach (EnumInfo enumInfo in Model.Enums){
 <text>
 declare module @enumInfo.ModuleName
 {
@@ -80,7 +76,7 @@ declare module @enumInfo.ModuleName
 	{
 		@foreach (TypeInfo property in enumInfo.Properties)
 		{
-		<text>@Raw(property.Name) = @Raw(property.TypescriptType);</text>
+		<text>@Raw(property.Name) = @Raw(property.TypescriptType),</text>
 		}
 	}
 }

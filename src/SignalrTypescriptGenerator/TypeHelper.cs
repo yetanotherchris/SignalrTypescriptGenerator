@@ -21,7 +21,7 @@ namespace SignalrTypescriptGenerator
 			EnumTypes = new Stack<Type>();
 		}
 
-		public List<FunctionDetails> GetFunctions(Type hubType)
+		public List<FunctionDetails> GetClientFunctions(Type hubType)
 		{
 			var list = new List<FunctionDetails>();
 
@@ -37,7 +37,6 @@ namespace SignalrTypescriptGenerator
 
 					functionDetails.Name = functionName;
 					functionDetails.Arguments = functionArgs;
-					functionDetails.JQueryPromise = "JQueryPromise<" + GetTypeContractName(method.ReturnType) + ">";
 
 					list.Add(functionDetails);
 				}

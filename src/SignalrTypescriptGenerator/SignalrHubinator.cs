@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Reflection;
 using Microsoft.AspNet.SignalR;
 using Microsoft.AspNet.SignalR.Hubs;
@@ -73,17 +74,31 @@ namespace SignalrTypescriptGenerator
 
 				string moduleName = hubType.Namespace;
 				string interfaceName = hubType.Name;
-				string server = hubType.FullName + "Server";
-
-				Type clientType = TypeHelper.ClientType(hubType);
-				string clientTypeName = clientType != null ? clientType.FullName : "any";
-
 				serviceInfo.ModuleName = moduleName;
 				serviceInfo.InterfaceName = interfaceName;
-				serviceInfo.ServerType = server;
+
+				Type clientType = TypeHelper.ClientType(hubType);
+				string clientTypeName = clientType != null ? clientType.FullName : "any";	
 				serviceInfo.ClientType = clientTypeName;
 
-				serviceInfo.FunctionDetails = TypeHelper.GetFunctions(hubType);
+				// Server type and functions
+				string serverType = hubType.Name + "Server";
+				string serverFullNamespace = hubType.FullName + "Server";
+				serviceInfo.ServerType = serverType;
+				serviceInfo.ServerTypeFullNamespace = serverFullNamespace;
+				foreach (var method in _hubmanager.GetHubMethods(hub.Name))
+				{
+					var ps = method.Parameters.Select(x => x.Name + " : " + TypeHelper.GetTypeContractName(x.ParameterType));
+					var functionDetails = new FunctionDetails()
+					{
+						Name = _typeHelper.FirstCharLowered(method.Name),
+						Arguments = "(" + string.Join(", ", ps) + ")",
+						ReturnType = "JQueryPromise<" +TypeHelper.GetTypeContractName(method.ReturnType)+ ">"
+					};
+
+					serviceInfo.ServerFunctions.Add(functionDetails);
+				}
+
 				list.Add(serviceInfo);
 			}
 
@@ -107,7 +122,7 @@ namespace SignalrTypescriptGenerator
 
 					clientInfo.ModuleName = moduleName;
 					clientInfo.InterfaceName = interfaceName;
-					clientInfo.FunctionDetails = TypeHelper.GetFunctions(hubType);
+					clientInfo.FunctionDetails = TypeHelper.GetClientFunctions(hubType);
 					list.Add(clientInfo);
 				}
 			}
