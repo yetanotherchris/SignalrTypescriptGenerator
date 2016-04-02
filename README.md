@@ -1,3 +1,5 @@
+[![Nuget.org](https://img.shields.io/nuget/v/SignalrTypescriptGenerator.svg?style=flat)](https://www.nuget.org/packages/SignalrTypescriptGenerator)
+
 # SignalrTypescriptGenerator
 A command line tool for generating typescript definitions for Signalr
 
