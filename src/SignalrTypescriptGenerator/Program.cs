@@ -11,19 +11,27 @@ namespace SignalrTypescriptGenerator
 	{
 		static void Main(string[] args)
 		{
-			var signalrHelper = new SignalrHubinator(@"C:\Code\syringe\src\Syringe.Service\bin\debug\Syringe.Service.exe");
+			try
+			{
+				var signalrHelper = new SignalrHubinator(@"C:\Code\syringe\src\Syringe.Service\bin\debug\Syringe.Service.exe");
 
-			var model = new TypesModel();
-			model.Hubs = signalrHelper.GetHubs();
-			model.ServiceContracts = signalrHelper.GetServiceContracts();
-			model.Clients = signalrHelper.GetClients();
-			model.DataContracts = signalrHelper.GetDataContracts();
-			model.Enums = signalrHelper.GetEnums();
+				var model = new TypesModel();
+				model.Hubs = signalrHelper.GetHubs();
+				model.ServiceContracts = signalrHelper.GetServiceContracts();
+				model.Clients = signalrHelper.GetClients();
+				model.DataContracts = signalrHelper.GetDataContracts();
+				model.Enums = signalrHelper.GetEnums();
 
-			string template = ReadEmbeddedFile("template.cshtml");
-			string result = Engine.Razor.RunCompile(template, "templateKey", null, model);
+				string template = ReadEmbeddedFile("template.cshtml");
+				string result = Engine.Razor.RunCompile(template, "templateKey", null, model);
 
-			Console.WriteLine(result);
+				Console.WriteLine(result);
+			}
+			catch (Exception e)
+			{
+				Console.WriteLine(e);
+				Environment.Exit(1);
+			}
 		}
 
 		static string ReadEmbeddedFile(string file)

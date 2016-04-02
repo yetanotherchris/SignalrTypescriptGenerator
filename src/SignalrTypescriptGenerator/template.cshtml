@@ -72,11 +72,11 @@ declare module @dataContractInfo.ModuleName
 <text>
 declare module @enumInfo.ModuleName
 {
-	interface @enumInfo.InterfaceName
+	enum @enumInfo.InterfaceName
 	{
 		@foreach (TypeInfo property in enumInfo.Properties)
 		{
-		<text>@Raw(property.Name) : @Raw(property.TypescriptType);</text>
+		<text>@Raw(property.Name) = @Raw(property.TypescriptType);</text>
 		}
 	}
 }
