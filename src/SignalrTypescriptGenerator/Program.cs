@@ -11,9 +11,15 @@ namespace SignalrTypescriptGenerator
 	{
 		static void Main(string[] args)
 		{
+			if (args.Length == 0)
+			{
+				Console.WriteLine("SignalrTypescriptGenerator.exe [path to assembly or exe]");
+				Environment.Exit(1);
+			}
+
 			try
 			{
-				var signalrHelper = new SignalrHubinator(@"C:\Code\syringe\src\Syringe.Service\bin\debug\Syringe.Service.exe");
+				var signalrHelper = new SignalrHubinator(args[0]);
 
 				var model = new TypesModel();
 				model.Hubs = signalrHelper.GetHubs();
@@ -23,7 +29,8 @@ namespace SignalrTypescriptGenerator
 				model.Enums = signalrHelper.GetEnums();
 
 				string template = ReadEmbeddedFile("template.cshtml");
-				string result = Engine.Razor.RunCompile(template, "templateKey", null, model);
+
+				string result = Engine.IsolatedRazor.RunCompile(template, "templateKey", null, model);
 
 				Console.WriteLine(result);
 			}
