@@ -29,8 +29,7 @@ namespace SignalrTypescriptGenerator
 				model.Enums = signalrHelper.GetEnums();
 
 				string template = ReadEmbeddedFile("template.cshtml");
-
-				string result = Engine.IsolatedRazor.RunCompile(template, "templateKey", null, model);
+				string result = Engine.Razor.RunCompile(template, "templateKey", null, model);
 
 				Console.WriteLine(result);
 			}
