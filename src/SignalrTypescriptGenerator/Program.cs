@@ -86,10 +86,10 @@ namespace SignalrTypescriptGenerator
 			Console.WriteLine("[SignalrTypescriptGenerator] Existing MD5 for {0}: {1}", filename, currentHash);
 			Console.WriteLine("[SignalrTypescriptGenerator] New MD5: {0}", newHash);
 
-			bool areTheSame = currentHash == newHash;
-			Console.WriteLine("[SignalrTypescriptGenerator] (content is {0})", areTheSame ? "the same - skipping file generation." : "different - generating new file");
+			bool hashesAreDifferent = (currentHash != newHash);
+			Console.WriteLine("[SignalrTypescriptGenerator] (content is {0})", hashesAreDifferent ? "different - generating new file" : "the same - skipping file generation.");
 
-			return areTheSame == false;
+			return hashesAreDifferent;
 		}
 
 		static string GetMd5(string contents)

@@ -19,4 +19,4 @@ This will print the Typescript to the console window. You can write to a file, w
 
 If you don't specify an output file, the typescript output is written to the console window. A post-build command line in Visual Studio might look like this:
 
-    $(SolutionDir)\packages\SignalrTypescriptGenerator.1.0.10\tools\SignalrTypescriptGenerator.exe -a "$(TargetPath)" -o "$(SolutionDir)src\MyProject.Web\Scripts\typings\Hubs.d.ts"
+    $(SolutionDir)\packages\SignalrTypescriptGenerator.1.0.11\tools\SignalrTypescriptGenerator.exe -a "$(TargetPath)" -o "$(SolutionDir)src\MyProject.Web\Scripts\typings\Hubs.d.ts"
