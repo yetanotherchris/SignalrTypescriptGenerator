@@ -10,7 +10,7 @@
 		<iconUrl>https://raw.githubusercontent.com/yetanotherchris/SignalrTypescriptGenerator/master/icon.png</iconUrl>
 		<requireLicenseAcceptance>false</requireLicenseAcceptance>
 		<description>Command line tool for generating Typescript hub definitions for a Signalr assembly.</description>
-		<releaseNotes>Added last generate time to the .ts output.</releaseNotes>
+		<releaseNotes>Breaking change: now use -a for the assembly, and -o for the file to write. See the Github project page for examples.</releaseNotes>
 		<copyright>C.Small Copyright 2016</copyright>
 		<tags>typescript signalr hubs</tags>
 	</metadata>

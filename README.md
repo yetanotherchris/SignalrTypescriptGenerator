@@ -11,14 +11,12 @@ This tool is based off this gist: https://gist.github.com/robfe/4583549. It work
 
 ### Usage
 
-    .\SignalrTypescriptGenerator.exe "c:\etc\path-to-myassembly.dll"
+    .\SignalrTypescriptGenerator.exe -a "c:\etc\path-to-myassembly.dll"
 
-This will print the Typescript to the console window, so you can pipe SignalrTypescriptGenerator.exe to a text file if needed:
+This will print the Typescript to the console window. You can write to a file, which automatically checks if the file has changed:
 
-    .\SignalrTypescriptGenerator.exe "c:\etc\path-to-myassembly.dll" > Hubs.ts
-    
-A post-build command line in Visual Studio might look like this:
+    .\SignalrTypescriptGenerator.exe -a "c:\etc\path-to-myassembly.dll" -o "C:\temp\.myfile.d.ts"
 
-    $(SolutionDir)\packages\SignalrTypescriptGenerator.1.0.8\tools\SignalrTypescriptGenerator.exe "$(TargetPath)" > "$(SolutionDir)src\MyProject.Web\Scripts\typings\Hubs.d.ts"
+If you don't specify an output file, the typescript output is written to the console window. A post-build command line in Visual Studio might look like this:
 
-
+    $(SolutionDir)\packages\SignalrTypescriptGenerator.1.0.10\tools\SignalrTypescriptGenerator.exe -a "$(TargetPath)" -o "$(SolutionDir)src\MyProject.Web\Scripts\typings\Hubs.d.ts"
