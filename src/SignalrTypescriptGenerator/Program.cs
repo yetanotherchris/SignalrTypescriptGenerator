@@ -14,27 +14,36 @@ namespace SignalrTypescriptGenerator
 {
 	class Program
 	{
-		static void Main(string[] args)
+		static int Main(string[] args)
 		{
+			if (AppDomain.CurrentDomain.IsDefaultAppDomain())
+			{
+				return RunInNewAppDomainToAllowRazorEngineToCleanup(args);
+			}
+
 			try
 			{
-				Parser.Default.ParseArguments<CommandLineOptions>(args)
+				return Parser.Default.ParseArguments<CommandLineOptions>(args)
 					.MapResult(options =>
 					{
 						Run(options);
 						return 0;
 					},
-					errors => 
-					{
-						Environment.Exit(1);
-						return 1;
-					});
+					errors => 1);
 			}
 			catch (Exception e)
 			{
 				Console.WriteLine(e);
-				Environment.Exit(1);
+				return 1;
 			}
+		}
+
+		static int RunInNewAppDomainToAllowRazorEngineToCleanup(string[] args)
+		{
+			var appDomain = AppDomain.CreateDomain("RazorEngine", null, AppDomain.CurrentDomain.SetupInformation);
+			var exitCode = appDomain.ExecuteAssembly(Assembly.GetExecutingAssembly().Location, args);
+			AppDomain.Unload(appDomain);
+			return exitCode;
 		}
 
 		static void Run(CommandLineOptions commandLineOptions)
