@@ -1,7 +1,6 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Reflection;
 using System.Security.Cryptography;
 using System.Text;
@@ -9,6 +8,7 @@ using CommandLine;
 using RazorEngine;
 using RazorEngine.Templating;
 using SignalrTypescriptGenerator.Models;
+using Encoding = System.Text.Encoding;
 
 namespace SignalrTypescriptGenerator
 {
@@ -105,24 +105,10 @@ namespace SignalrTypescriptGenerator
 		{
 			using (var md5 = MD5.Create())
 			{
-				using (var memoryStream = new MemoryStream())
+				using (var memoryStream = new MemoryStream(Encoding.UTF8.GetBytes(contents)))
 				{
-					using (var writer = new StreamWriter(memoryStream))
-					{
-						writer.Write(contents);
-						memoryStream.Position = 0;
-
-						byte[] hash = md5.ComputeHash(memoryStream);
-						StringBuilder stringBuilder = new StringBuilder();
-
-						// Put it into nice hex format
-						foreach (byte b in hash)
-						{
-							stringBuilder.AppendFormat("{0:x2}", b);
-						}
-
-						return stringBuilder.ToString();
-					}
+					var hash = md5.ComputeHash(memoryStream);
+					return hash.Aggregate(new StringBuilder(), (sb, b) => sb.Append(b.ToString("x2"))).ToString();
 				}
 			}
 		}
