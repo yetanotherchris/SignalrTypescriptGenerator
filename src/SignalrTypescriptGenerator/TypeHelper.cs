@@ -87,7 +87,7 @@ namespace SignalrTypescriptGenerator
 					return GetTypeContractName(type.GetGenericArguments()[0]);
 				}
 
-				if (typeof(List<>).IsAssignableFrom(type.GetGenericTypeDefinition()))
+				if (typeof(IEnumerable<>).IsAssignableFrom(type.GetGenericTypeDefinition()))
 				{
 					return GetTypeContractName(type.GetGenericArguments()[0]) + "[]";
 				}
