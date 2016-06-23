@@ -108,7 +108,12 @@ namespace SignalrTypescriptGenerator
 				using (var memoryStream = new MemoryStream(Encoding.UTF8.GetBytes(contents)))
 				{
 					var hash = md5.ComputeHash(memoryStream);
-					return hash.Aggregate(new StringBuilder(), (sb, b) => sb.Append(b.ToString("x2"))).ToString();
+
+				    StringBuilder result = new StringBuilder();
+				    foreach (byte b in hash)
+				        result = result.Append(b.ToString("x2"));
+
+				    return result.ToString();
 				}
 			}
 		}
