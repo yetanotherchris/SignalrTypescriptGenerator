@@ -9,10 +9,10 @@ namespace GeniusSports.Signalr.Hubs.TypescriptGenerator.SampleUsage.DataContract
         [DataMember]
         public int InnerProperty1 { get; set; }
 
-        [DataMember]
+        [DataMember(Name = "innerProperty2")]
         public DateTime InnerProperty2 { get; set; }
 
-        [DataMember]
+        [DataMember(Name = "innerProperty3WithCrazyCustomName")]
         public SomethingEnum InnerProperty3 { get; set; }
     }
 }

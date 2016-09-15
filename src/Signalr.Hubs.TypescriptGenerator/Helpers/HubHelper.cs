@@ -90,7 +90,7 @@ namespace GeniusSports.Signalr.Hubs.TypescriptGenerator.Helpers
 			    
                 var properties = type
                     .GetProperties(BindingFlags.Instance | BindingFlags.Public | BindingFlags.DeclaredOnly)
-                    .Select(prop => new TypeInfo(name: prop.Name, typescriptType: typeHelper.GetTypeContractName(prop.PropertyType)))
+                    .Select(prop => new TypeInfo(name: typeHelper.GetPropertyName(prop), typescriptType: typeHelper.GetTypeContractName(prop.PropertyType)))
                     .ToList();
 
                 list.Add(new DataContractInfo(moduleName: type.Namespace, interfaceName: typeHelper.GenericSpecificName(type, false), properties: properties));

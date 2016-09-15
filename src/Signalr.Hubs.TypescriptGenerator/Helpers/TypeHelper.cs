@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
+using System.Runtime.Serialization;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using GeniusSports.Signalr.Hubs.TypescriptGenerator.Models;
@@ -131,5 +133,11 @@ namespace GeniusSports.Signalr.Hubs.TypescriptGenerator.Helpers
 			}
 			return name;
 		}
+
+	    public string GetPropertyName(PropertyInfo prop)
+	    {
+	        var dataMemberAttribute = prop.GetCustomAttribute<DataMemberAttribute>();
+	        return !string.IsNullOrWhiteSpace(dataMemberAttribute?.Name) ? dataMemberAttribute.Name : prop.Name;
+	    }
 	}
 }

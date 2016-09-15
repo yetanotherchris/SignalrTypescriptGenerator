@@ -12,22 +12,6 @@ namespace GeniusSports.Signalr.Hubs.TypescriptGenerator
     {
         public string Generate()
         {
-            //if (AppDomain.CurrentDomain.IsDefaultAppDomain())
-            //{
-            //    RunInNewAppDomainToAllowRazorEngineToCleanup();
-            //}
-            return Run();
-        }
-
-        //private static void RunInNewAppDomainToAllowRazorEngineToCleanup()
-        //{
-        //    var appDomain = AppDomain.CreateDomain("RazorEngine", null, AppDomain.CurrentDomain.SetupInformation);
-        //    appDomain.ExecuteAssembly(Assembly.GetExecutingAssembly().Location);
-        //    AppDomain.Unload(appDomain);
-        //}
-
-        private static string Run()
-        {
             var model = GenerateTypeScriptModel();
             var template = ReadEmbeddedFile("template.cshtml");
             var outputText = Engine.Razor.RunCompile(template, "templateKey", null, model);
