@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<package >
+	<metadata>
+		<id>Signalr.Hubs.TypescriptGenerator.Console</id>
+		<version>$version$</version>
+		<title>Signalr Typescript Hub Generator</title>
+		<authors>Genius Sports</authors>
+		<owners>Genius Sports</owners>
+		<projectUrl>https://github.com/geniussportsgroup/Signalr.Hubs.TypescriptGenerator</projectUrl>
+		<requireLicenseAcceptance>false</requireLicenseAcceptance>
+		<description>Command line tool for generating Typescript hub definitions for a Signalr assembly.</description>
+		<tags>typescript signalr hubs</tags>
+	</metadata>
+	<files>
+		<file src="bin\release\*.*" target="tools" />
+	</files>
+</package>
