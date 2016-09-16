@@ -27,6 +27,15 @@ This will output the TypeScript to the specified file path
 
 If the output file is not specified the result is written to standard out.
 
+**# ONLY COMBATIBLE WITH SIGNALR VERSIONS AT 2.2.1.0 OR EARLIER #**
+
+We have compiled this at verison 2.2.1.0 so in order for the HubManager to recognise your hubs we are using an assembly redirect. If Microsoft release a new version we will need to update this.
+ 
+	<dependentAssembly>
+        <assemblyIdentity name="Microsoft.AspNet.SignalR.Core" publicKeyToken="31bf3856ad364e35" culture="neutral" />
+        <bindingRedirect oldVersion="0.0.0.0-2.2.1.0" newVersion="2.2.1.0" />
+      </dependentAssembly>
+
 ### Data Contract Property Name
 Sometimes the serialized name of your data contract properties are changed from the actual C# property name. This is done through the DataMember property:
 
