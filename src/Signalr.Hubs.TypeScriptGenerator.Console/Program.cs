@@ -50,7 +50,15 @@ namespace GeniusSports.Signalr.Hubs.TypeScriptGenerator.Console
 
             var hubTypeScriptGenerator = new HubTypeScriptGenerator();
             var outputText = hubTypeScriptGenerator.Generate();
-            File.WriteAllText(commandLineOptions.OutFile, outputText);
+
+            if (string.IsNullOrWhiteSpace(commandLineOptions.OutFile))
+            {
+                System.Console.WriteLine(outputText);
+            }
+            else
+            {
+                File.WriteAllText(commandLineOptions.OutFile, outputText);
+            }
         }
 
 

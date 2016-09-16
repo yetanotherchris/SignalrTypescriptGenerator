@@ -25,6 +25,8 @@ This will output the TypeScript to the specified file path
 
     .\Signalr.Hubs.TypeScriptGenerator.Console.exe -a "c:\etc\path-to-myassembly.dll" -o "C:\temp\.myfile.d.ts"
 
+If the output file is not specified the result is written to standard out.
+
 ### Data Contract Property Name
 Sometimes the serialized name of your data contract properties are changed from the actual C# property name. This is done through the DataMember property:
 
