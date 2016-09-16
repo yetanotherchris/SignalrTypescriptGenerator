@@ -2,7 +2,7 @@
 using System.IO;
 using System.Reflection;
 
-namespace GeniusSports.Signalr.Hubs.TypescriptGenerator.Console
+namespace GeniusSports.Signalr.Hubs.TypeScriptGenerator.Console
 {
 	internal class AssemblyLoader
 	{

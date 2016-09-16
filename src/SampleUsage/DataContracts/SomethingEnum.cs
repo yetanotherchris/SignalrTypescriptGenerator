@@ -1,6 +1,6 @@
 using System.Runtime.Serialization;
 
-namespace GeniusSports.Signalr.Hubs.TypescriptGenerator.SampleUsage.DataContracts
+namespace GeniusSports.Signalr.Hubs.TypeScriptGenerator.SampleUsage.DataContracts
 {
     [DataContract]
     public enum SomethingEnum

@@ -1,12 +1,12 @@
 ﻿using System;
 using System.IO;
 using System.Reflection;
-using GeniusSports.Signalr.Hubs.TypescriptGenerator.Helpers;
-using GeniusSports.Signalr.Hubs.TypescriptGenerator.Models;
+using GeniusSports.Signalr.Hubs.TypeScriptGenerator.Helpers;
+using GeniusSports.Signalr.Hubs.TypeScriptGenerator.Models;
 using RazorEngine;
 using RazorEngine.Templating;
 
-namespace GeniusSports.Signalr.Hubs.TypescriptGenerator
+namespace GeniusSports.Signalr.Hubs.TypeScriptGenerator
 {
     public class HubTypeScriptGenerator
     {

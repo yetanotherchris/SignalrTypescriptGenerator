@@ -7,8 +7,8 @@
     <ProjectGuid>{C90F8C7B-213B-4CD0-A9F0-3A39634CECDE}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>GeniusSports.Signalr.Hubs.TypescriptGenerator</RootNamespace>
-    <AssemblyName>GeniusSports.Signalr.Hubs.TypescriptGenerator</AssemblyName>
+    <RootNamespace>GeniusSports.Signalr.Hubs.TypeScriptGenerator</RootNamespace>
+    <AssemblyName>GeniusSports.Signalr.Hubs.TypeScriptGenerator</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -92,7 +92,7 @@
   <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config" />
-    <None Include="Signalr.Hubs.TypescriptGenerator.nuspec" />
+    <None Include="Signalr.Hubs.TypeScriptGenerator.nuspec" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="template.cshtml" />

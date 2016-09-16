@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace GeniusSports.Signalr.Hubs.TypescriptGenerator.Models
+namespace GeniusSports.Signalr.Hubs.TypeScriptGenerator.Models
 {
 	public class TypesModel
 	{

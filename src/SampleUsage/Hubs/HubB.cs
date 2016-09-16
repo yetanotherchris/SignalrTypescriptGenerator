@@ -1,7 +1,7 @@
-using GeniusSports.Signalr.Hubs.TypescriptGenerator.SampleUsage.DataContracts;
+using GeniusSports.Signalr.Hubs.TypeScriptGenerator.SampleUsage.DataContracts;
 using Microsoft.AspNet.SignalR;
 
-namespace GeniusSports.Signalr.Hubs.TypescriptGenerator.SampleUsage.Hubs
+namespace GeniusSports.Signalr.Hubs.TypeScriptGenerator.SampleUsage.Hubs
 {
     public interface IHubBClient
     {

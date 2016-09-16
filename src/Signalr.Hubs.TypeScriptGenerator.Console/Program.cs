@@ -3,7 +3,7 @@ using System.IO;
 using System.Reflection;
 using CommandLine;
 
-namespace GeniusSports.Signalr.Hubs.TypescriptGenerator.Console
+namespace GeniusSports.Signalr.Hubs.TypeScriptGenerator.Console
 {
     public class Program
     {

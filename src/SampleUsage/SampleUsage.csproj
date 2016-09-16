@@ -7,8 +7,8 @@
     <ProjectGuid>{668072BF-5142-4796-BA67-8CB676C7196C}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>GeniusSports.Signalr.Hubs.TypescriptGenerator.SampleUsage</RootNamespace>
-    <AssemblyName>GeniusSports.Signalr.Hubs.TypescriptGenerator.SampleUsage</AssemblyName>
+    <RootNamespace>GeniusSports.Signalr.Hubs.TypeScriptGenerator.SampleUsage</RootNamespace>
+    <AssemblyName>GeniusSports.Signalr.Hubs.TypeScriptGenerator.SampleUsage</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -80,9 +80,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Signalr.Hubs.TypescriptGenerator\Signalr.Hubs.TypescriptGenerator.csproj">
+    <ProjectReference Include="..\Signalr.Hubs.TypeScriptGenerator\Signalr.Hubs.TypeScriptGenerator.csproj">
       <Project>{C90F8C7B-213B-4CD0-A9F0-3A39634CECDE}</Project>
-      <Name>Signalr.Hubs.TypescriptGenerator</Name>
+      <Name>Signalr.Hubs.TypeScriptGenerator</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

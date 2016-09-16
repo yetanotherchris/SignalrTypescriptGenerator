@@ -1,4 +1,4 @@
-namespace GeniusSports.Signalr.Hubs.TypescriptGenerator.Models
+namespace GeniusSports.Signalr.Hubs.TypeScriptGenerator.Models
 {
 	public class FunctionDetails
 	{

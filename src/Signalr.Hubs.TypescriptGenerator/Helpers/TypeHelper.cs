@@ -5,10 +5,10 @@ using System.Reflection;
 using System.Runtime.Serialization;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
-using GeniusSports.Signalr.Hubs.TypescriptGenerator.Models;
+using GeniusSports.Signalr.Hubs.TypeScriptGenerator.Models;
 using Microsoft.AspNet.SignalR;
 
-namespace GeniusSports.Signalr.Hubs.TypescriptGenerator.Helpers
+namespace GeniusSports.Signalr.Hubs.TypeScriptGenerator.Helpers
 {
 	internal class TypeHelper
 	{

@@ -1,7 +1,7 @@
 using CommandLine;
 using CommandLine.Text;
 
-namespace GeniusSports.Signalr.Hubs.TypescriptGenerator.Console
+namespace GeniusSports.Signalr.Hubs.TypeScriptGenerator.Console
 {
 	public class CommandLineOptions
 	{

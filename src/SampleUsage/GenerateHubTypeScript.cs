@@ -1,6 +1,6 @@
 ﻿using NUnit.Framework;
 
-namespace GeniusSports.Signalr.Hubs.TypescriptGenerator.SampleUsage
+namespace GeniusSports.Signalr.Hubs.TypeScriptGenerator.SampleUsage
 {
     [TestFixture]
     public class GenerateHubTypeScript
