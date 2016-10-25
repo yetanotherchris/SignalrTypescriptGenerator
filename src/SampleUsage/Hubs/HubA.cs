@@ -16,6 +16,11 @@ namespace GeniusSports.Signalr.Hubs.TypeScriptGenerator.SampleUsage.Hubs
             return new SomethingDto();
         }
 
+        public InheritedSomethingDto GetInheritedSomething()
+        {
+            return new InheritedSomethingDto();
+        }
+
         public void Ping()
         {
         }

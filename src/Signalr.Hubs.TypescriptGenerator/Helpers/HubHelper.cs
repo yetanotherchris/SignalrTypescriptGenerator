@@ -1,10 +1,10 @@
-﻿using System;
+﻿using GeniusSports.Signalr.Hubs.TypeScriptGenerator.Models;
+using Microsoft.AspNet.SignalR;
+using Microsoft.AspNet.SignalR.Hubs;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using GeniusSports.Signalr.Hubs.TypeScriptGenerator.Models;
-using Microsoft.AspNet.SignalR;
-using Microsoft.AspNet.SignalR.Hubs;
 using TypeInfo = GeniusSports.Signalr.Hubs.TypeScriptGenerator.Models.TypeInfo;
 
 namespace GeniusSports.Signalr.Hubs.TypeScriptGenerator.Helpers
@@ -33,7 +33,7 @@ namespace GeniusSports.Signalr.Hubs.TypeScriptGenerator.Helpers
         public List<ServiceInfo> GetServiceContracts()
         {
             var list = new List<ServiceInfo>();
-			
+
             foreach (var hub in hubmanager.GetHubs())
             {
                 var hubMethods = hubmanager
@@ -87,9 +87,9 @@ namespace GeniusSports.Signalr.Hubs.TypeScriptGenerator.Helpers
             while (typeHelper.InterfaceTypes.Count != 0)
             {
                 var type = typeHelper.InterfaceTypes.Pop();
-			    
+
                 var properties = type
-                    .GetProperties(BindingFlags.Instance | BindingFlags.Public | BindingFlags.DeclaredOnly)
+                    .GetProperties(BindingFlags.Instance | BindingFlags.Public)
                     .Select(prop => new TypeInfo(name: typeHelper.GetPropertyName(prop), typescriptType: typeHelper.GetTypeContractName(prop.PropertyType)))
                     .ToList();
 
@@ -107,7 +107,7 @@ namespace GeniusSports.Signalr.Hubs.TypeScriptGenerator.Helpers
             {
                 var type = typeHelper.EnumTypes.Pop();
 
-                var enumProperties = 
+                var enumProperties =
                     Enum.GetNames(type)
                         .Select(propertyName => new TypeInfo(name: propertyName, typescriptType: $"{Enum.Parse(type, propertyName):D}"))
                         .ToList();
